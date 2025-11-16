@@ -1,6 +1,6 @@
 # Weekend Planner AI Agent
 
-An intelligent family weekend activity planner powered by Google Gemini 2.5 Flash and Google ADK (Agent Development Kit). This multi-agent system researches weather conditions and suggests personalized activities for families with children.
+An intelligent family weekend activity planner powered by Google Gemini 2.5 Flash and Google ADK (Agent Development Kit). This multi-agent system researches weather conditions and suggests personalized activities for families with children. This is Kaggle Capstone project for Nov 2025 AI Agents Intensive.
 
 ## Features
 
@@ -34,7 +34,7 @@ WeekendPlanner/
 1. Clone the repository:
 ```bash
 git clone <repository-url>
-cd AIAgentCourse
+cd WeekendPlanner
 ```
 
 2. Create and activate a virtual environment:
@@ -52,28 +52,20 @@ pip install -r requirements.txt
 
 4. Configure Google ADK:
    - Set up your Google Cloud credentials
-   - Configure the `GEMINI_API_KEY` environment variable
+   - Configure the GOOGLE_API_KEY="your-key-here" environment variable
+   -   run this comment "echo 'GOOGLE_API_KEY="your_api_key_here"' > .env"
 
 ## Usage
 
 ### Running the Agent
 
-```python
-from WeekendPlanner import agent
-
-# The root_agent is exposed as 'agent'
-# Use with Google ADK CLI or programmatically
-result = agent.run(
-    weather_forecast="sunny",
-    kid_ages="5-8",
-    zip_code="10001"
-)
-```
+run this command "adk web"
 
 ### Agent Architecture
 
 The system uses a multi-agent hierarchy:
 
+0. **Input Parser**: Checks user input
 1. **Weather Agent**: Checks weather conditions
 2. **Weather Router**: Routes to appropriate activity planning based on weather
 3. **Activity Research Group** (runs when weather is good):
@@ -97,17 +89,10 @@ The system generates a concise, bulleted summary with:
 - 3-5 key activity recommendations
 - Disclaimer about AI-generated results
 
-## Disclaimer
+Sample output
 
-Results are based on AI agent research and should be verified for accuracy and availability before planning.
+<img width="689" height="359" alt="image" src="https://github.com/user-attachments/assets/e40ef150-2971-473c-ae3b-5fa124dd8d4e" />
 
-## License
-
-[Add your license here]
-
-## Contributing
-
-[Add contribution guidelines]
 
 ## Support
 
