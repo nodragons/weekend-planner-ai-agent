@@ -19,7 +19,6 @@ An intelligent family weekend activity planner powered by Google Gemini 2.5 Flas
 WeekendPlanner/
 ├── __init__.py           # Package initialization
 ├── agent.py              # Main agent definitions and orchestration
-└── evalsetf78523.evalset.json  # Test evaluation data
 ```
 
 ## Installation
@@ -74,6 +73,9 @@ The system uses a multi-agent hierarchy:
 4. **Home Activities Agent**: Suggests indoor activities when weather is poor
 5. **Summarizer Agent**: Consolidates findings into recommendations
 
+<img width="1166" height="281" alt="image" src="https://github.com/user-attachments/assets/ffb99c93-5deb-4170-bd32-609363e30fe6" />
+
+
 ## Configuration
 
 Key agents use `gemini-2.5-flash` model. Customize by modifying:
@@ -92,6 +94,10 @@ The system generates a concise, bulleted summary with:
 Sample output
 
 <img width="689" height="359" alt="image" src="https://github.com/user-attachments/assets/e40ef150-2971-473c-ae3b-5fa124dd8d4e" />
+
+<img width="679" height="397" alt="image" src="https://github.com/user-attachments/assets/82c96902-fbbb-41cc-b9b5-36b6fbd4758d" />
+
+<img width="686" height="437" alt="image" src="https://github.com/user-attachments/assets/c58a1a5d-71ee-4321-bd9a-49ca7d4e72b8" />
 
 
 ## Support
