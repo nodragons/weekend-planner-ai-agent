@@ -16,9 +16,20 @@ An intelligent family weekend activity planner powered by Google Gemini 2.5 Flas
 ## Project Structure
 
 ```
-WeekendPlanner/
-├── __init__.py           # Package initialization
-├── agent.py              # Main agent definitions and orchestration
+AIAgentCourse/
+├── WeekendPlanner/          # Backend multi-agent system
+│   ├── __init__.py          # Package initialization
+│   └── agent.py             # Main agent definitions and orchestration
+├── frontend/                # Vue.js frontend application
+│   ├── src/
+│   │   ├── components/      # Vue components
+│   │   ├── services/        # ADK API client
+│   │   ├── App.vue          # Root component
+│   │   └── main.js          # Vue initialization
+│   ├── package.json
+│   └── vite.config.js
+├── requirements.txt         # Python dependencies
+└── README.md
 ```
 
 ## Installation
@@ -56,9 +67,54 @@ pip install -r requirements.txt
 
 ## Usage
 
-### Running the Agent
+### Running the Backend (ADK)
 
-run this command "adk web"
+Start the ADK backend server:
+
+```bash
+# Make sure virtual environment is activated
+source .venv/bin/activate  # macOS/Linux
+
+# Start ADK web server on port 8000
+adk web
+```
+
+The ADK backend provides a REST API that the frontend connects to.
+
+### Running the Frontend
+
+The project includes a custom Vue.js frontend with a form-based interface optimized for weekend planning.
+
+1. **First time setup** - Install frontend dependencies:
+```bash
+cd frontend
+npm install
+```
+
+2. **Start the development server**:
+```bash
+# Make sure you're in the frontend directory
+npm run dev
+```
+
+This starts Vite dev server on `http://localhost:5173`
+
+3. **Open in browser**:
+   - Navigate to `http://localhost:5173`
+   - Enter zip code and kids' ages
+   - Click "Plan My Weekend" to see agent-by-agent streaming results
+
+**Note**: Both backend (port 8000) and frontend (port 5173) must be running simultaneously. The frontend proxies API requests to the backend.
+
+### Using the ADK Web Interface (Alternative)
+
+You can also use the generic ADK chat interface:
+
+```bash
+adk web
+```
+
+Then visit `http://localhost:8000` and interact via chat.
 
 ### Agent Architecture
 
@@ -99,6 +155,46 @@ Sample output
 
 <img width="686" height="437" alt="image" src="https://github.com/user-attachments/assets/c58a1a5d-71ee-4321-bd9a-49ca7d4e72b8" />
 
+
+## Frontend Features
+
+The Vue.js frontend provides:
+
+- **Form-Based Input**: Clean UI with zip code and kids ages inputs
+- **Real-Time Streaming**: Watch each agent respond as they process
+- **Agent Visualization**: See the full agent pipeline in action:
+  - 📋 Input Processing
+  - 🌤️ Weather Check
+  - 🔀 Planning Router
+  - 🎯 Local Activities
+  - 🎉 Special Events
+  - 🏠 Home Activities (bad weather only)
+  - 📝 Final Summary
+- **Error Handling**: Clear error messages with retry functionality
+- **Responsive Design**: Works on desktop and mobile devices
+
+## Development
+
+### Frontend Development
+
+The frontend uses:
+- **Vue 3** with Composition API
+- **Vite** for fast development and builds
+- **Vanilla CSS** for styling (no external UI frameworks)
+
+Key files:
+- `frontend/src/services/adkClient.js` - ADK API integration with SSE streaming
+- `frontend/src/components/PlannerForm.vue` - Input form component
+- `frontend/src/components/StreamingResults.vue` - Results display
+- `frontend/src/components/AgentOutput.vue` - Individual agent message card
+
+To build for production:
+```bash
+cd frontend
+npm run build
+```
+
+Output will be in `frontend/dist/` for static hosting.
 
 ## Support
 
